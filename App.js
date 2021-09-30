@@ -3,6 +3,7 @@ import {SafeAreaView, SectionList, Text, View} from 'react-native';
 import {pantsDummyData} from './data/pantsData';
 import {shirtsDummyData} from './data/shirtsData';
 import Pants from './model/Pants';
+import ParentClass from './model/ParentClass';
 import Tshirt from './model/Tshirt';
 
 const App = props => {
@@ -10,7 +11,7 @@ const App = props => {
   const PANTS = 'Pants';
 
   /**
-   * @type {[{title: SHIRTS, data: Tshirt[]}, {title: PANTS, data: Pants[]}]}
+   * @type {[{title: SHIRTS, data: ParentClass[]}, {title: PANTS, data: ParentClass[]}]}
    */
   const DATA = [
     {
@@ -41,8 +42,10 @@ const App = props => {
         ) =>
           item instanceof Pants ? (
             <Pantss item={item} />
-          ) : (
+          ) : item instanceof Tshirt ? (
             <Tshirts item={item} />
+          ) : (
+            <Text>{item.toString()}</Text>
           )
         }
         renderSectionHeader={({section: {title}}) => (
@@ -73,7 +76,7 @@ const Pantss = props => {
   const pants = props.item;
   return (
     <View style={{margin: 10}}>
-      <Text style={{color: pants.color}}>Color: {pants.color}</Text>
+      <Text style={{color: pants.color}}>Color hex code: {pants.color}</Text>
       <Text>Hip: {pants.hip}</Text>
     </View>
   );

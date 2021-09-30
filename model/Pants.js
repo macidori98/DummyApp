@@ -1,10 +1,14 @@
-class Pants {
+import ParentClass from './ParentClass';
+
+class Pants extends ParentClass {
   /**
    *
    * @param {Color} color
    * @param {number} hip
    */
   constructor(color, hip) {
+    super();
+
     /**
      * @type {Color}
      */
