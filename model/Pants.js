@@ -3,11 +3,12 @@ import ParentClass from './ParentClass';
 class Pants extends ParentClass {
   /**
    *
+   * @param {string} id
    * @param {Color} color
    * @param {number} hip
    */
-  constructor(color, hip) {
-    super();
+  constructor(id, color, hip) {
+    super(id);
 
     /**
      * @type {Color}

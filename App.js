@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView, SectionList, Text, View} from 'react-native';
+import Colors from './constants/Colors';
 import {pantsDummyData} from './data/pantsData';
 import {shirtsDummyData} from './data/shirtsData';
 import Pants from './model/Pants';
@@ -27,19 +28,7 @@ const App = props => {
     <SafeAreaView style={{margin: 10}}>
       <SectionList
         sections={DATA}
-        keyExtractor={(item, index) => `${item.toString()}${index}`}
-        renderItem={(
-          {item} /*{
-            switch (true) {
-              case item instanceof Pants:
-                return <Pantss item={item} />;
-              case item instanceof Tshirt:
-                return <Tshirts item={item} />;
-              default:
-                break;
-            }
-          }*/,
-        ) =>
+        renderItem={({item}) =>
           item instanceof Pants ? (
             <Pantss item={item} />
           ) : item instanceof Tshirt ? (
@@ -49,7 +38,27 @@ const App = props => {
           )
         }
         renderSectionHeader={({section: {title}}) => (
-          <Text style={{fontSize: 20, fontWeight: '800'}}>{title}</Text>
+          <View style={{backgroundColor: Colors.white}}>
+            <View
+              style={{
+                marginTop: 10,
+                height: 50,
+                backgroundColor: Colors.white,
+                shadowColor: 'black',
+                shadowOpacity: 0.26,
+                marginEnd: 10,
+                marginStart: 10,
+                shadowOffset: {width: 0, height: 1},
+                shadowRadius: 8,
+                elevation: 5,
+                borderRadius: 10,
+                justifyContent: 'center',
+              }}>
+              <Text style={{fontSize: 20, fontWeight: '800', margin: 10}}>
+                {title}
+              </Text>
+            </View>
+          </View>
         )}
       />
     </SafeAreaView>
@@ -62,9 +71,38 @@ const Tshirts = props => {
    */
   const shirt = props.item;
   return (
-    <View style={{margin: 10}}>
-      <Text>Height: {shirt.height}</Text>
-      <Text>Width: {shirt.width}</Text>
+    <View>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginStart: 10,
+        }}>
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+          <View
+            style={{
+              margin: 10,
+              backgroundColor: Colors.black,
+              borderRadius: 30,
+              height: 20,
+              width: 20,
+            }}
+          />
+        </View>
+        <View style={{margin: 10}}>
+          <Text>Height: {shirt.height}</Text>
+          <Text>Width: {shirt.width}</Text>
+        </View>
+      </View>
+      <View
+        style={{
+          backgroundColor: Colors.greyish,
+          height: 1,
+          width: '100%',
+          marginTop: 5,
+          marginBottom: 5,
+        }}
+      />
     </View>
   );
 };
@@ -75,9 +113,40 @@ const Pantss = props => {
    */
   const pants = props.item;
   return (
-    <View style={{margin: 10}}>
-      <Text style={{color: pants.color}}>Color hex code: {pants.color}</Text>
-      <Text>Hip: {pants.hip}</Text>
+    <View>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginStart: 10,
+        }}>
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+          <View
+            style={{
+              margin: 10,
+              backgroundColor: pants.color,
+              borderRadius: 30,
+              height: 20,
+              width: 20,
+            }}
+          />
+        </View>
+        <View style={{margin: 10}}>
+          <Text style={{color: pants.color}}>
+            Color hex code: {pants.color}
+          </Text>
+          <Text>Hip: {pants.hip}</Text>
+        </View>
+      </View>
+      <View
+        style={{
+          backgroundColor: Colors.greyish,
+          height: 1,
+          width: '100%',
+          marginTop: 5,
+          marginBottom: 5,
+        }}
+      />
     </View>
   );
 };

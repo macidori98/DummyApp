@@ -2,11 +2,12 @@ import ParentClass from './ParentClass';
 
 class Tshirt extends ParentClass {
   /**
+   * @param {string} id
    * @param {number} height
    * @param {number} width
    */
-  constructor(height, width) {
-    super();
+  constructor(id, height, width) {
+    super(id);
 
     /**
      * @type {number}
