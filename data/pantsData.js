@@ -26,16 +26,16 @@ export const pantsDummyData = [
 ];
 
 /**
- * @type {MPants[]}
+ * @type {PantsObj[]}
  */
 export const pantsJSDOCDummyData = [
-  {id: 'pants1', color: Colors.red, hip: 65},
-  {id: 'pants2', color: Colors.blue, hip: 56},
-  {id: 'pants3', color: Colors.blue, hip: 34},
-  {id: 'pants4', color: Colors.green, hip: 23},
-  {id: 'pants5', color: Colors.greyish, hip: 65},
-  {id: 'pants6', color: Colors.red, hip: 87},
-  {id: 'pants7', color: Colors.blue, hip: 63},
-  {id: 'pants8', color: Colors.red, hip: 85},
-  {id: 'pants9', color: Colors.blue, hip: 64},
+  {typeIdentifier: 'pant-object', id: 'pants1', color: Colors.red, hip: 65},
+  {typeIdentifier: 'pant-object', id: 'pants2', color: Colors.blue, hip: 56},
+  {typeIdentifier: 'pant-object', id: 'pants3', color: Colors.blue, hip: 34},
+  {typeIdentifier: 'pant-object', id: 'pants4', color: Colors.green, hip: 23},
+  {typeIdentifier: 'pant-object', id: 'pants5', color: Colors.greyish, hip: 65},
+  {typeIdentifier: 'pant-object', id: 'pants6', color: Colors.red, hip: 87},
+  {typeIdentifier: 'pant-object', id: 'pants7', color: Colors.blue, hip: 63},
+  {typeIdentifier: 'pant-object', id: 'pants8', color: Colors.red, hip: 85},
+  {typeIdentifier: 'pant-object', id: 'pants9', color: Colors.blue, hip: 64},
 ];

@@ -16,16 +16,16 @@ export const shirtsDummyData = [
 ];
 
 /**
- * @type {MShirts[]}
+ * @type {ShirtsObj[]}
  */
 export const shirtsJSDOCDummyData = [
-  {id: 'shirt1', height: 121, width: 34},
-  {id: 'shirt2', height: 324, width: 23},
-  {id: 'shirt3', height: 546, width: 78},
-  {id: 'shirt4', height: 377, width: 86},
-  {id: 'shirt5', height: 546, width: 87},
-  {id: 'shirt6', height: 286, width: 84},
-  {id: 'shirt7', height: 364, width: 76},
-  {id: 'shirt8', height: 466, width: 45},
-  {id: 'shirt9', height: 685, width: 83},
+  {id: 'shirt1', height: 121, width: 34, typeIdentifier: 'shirt-object'},
+  {id: 'shirt2', height: 324, width: 23, typeIdentifier: 'shirt-object'},
+  {id: 'shirt3', height: 546, width: 78, typeIdentifier: 'shirt-object'},
+  {id: 'shirt4', height: 377, width: 86, typeIdentifier: 'shirt-object'},
+  {id: 'shirt5', height: 546, width: 87, typeIdentifier: 'shirt-object'},
+  {id: 'shirt6', height: 286, width: 84, typeIdentifier: 'shirt-object'},
+  {id: 'shirt7', height: 364, width: 76, typeIdentifier: 'shirt-object'},
+  {id: 'shirt8', height: 466, width: 45, typeIdentifier: 'shirt-object'},
+  {id: 'shirt9', height: 685, width: 83, typeIdentifier: 'shirt-object'},
 ];

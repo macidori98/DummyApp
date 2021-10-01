@@ -1,8 +1,9 @@
+import {template} from '@babel/core';
 import React from 'react';
 import {SafeAreaView, SectionList, Text, View} from 'react-native';
 import Colors from './constants/Colors';
-import {pantsDummyData} from './data/pantsData';
-import {shirtsDummyData} from './data/shirtsData';
+import {pantsDummyData, pantsJSDOCDummyData} from './data/pantsData';
+import {shirtsDummyData, shirtsJSDOCDummyData} from './data/shirtsData';
 import Pants from './model/Pants';
 import ParentClass from './model/ParentClass';
 import Tshirt from './model/Tshirt';
@@ -11,31 +12,113 @@ const App = props => {
   const SHIRTS = 'T-shirts';
   const PANTS = 'Pants';
 
+  //  /**
+  //   * @type {[{title: SHIRTS, data: ParentClass[]}, {title: PANTS, data: ParentClass[]}]}
+  //   */
+  //  const DATA = [
+  //    {
+  //      title: 'T-shirts',
+  //      data: shirtsDummyData,
+  //    },
+  //    {
+  //      title: 'Pants',
+  //      data: pantsDummyData,
+  //    },
+  //  ];
+
   /**
-   * @type {[{title: SHIRTS, data: ParentClass[]}, {title: PANTS, data: ParentClass[]}]}
+   * @template T
+   * @typedef {{title: SHIRTS, data: T[]}} MyType1
+   */
+
+  /**
+   * @template D
+   * @typedef {{title: PANTS, data: D[]}} MyType2
+   */
+
+  /**
+   * @type {{title: string, data: (Pant|Shirt)[]}[]}
    */
   const DATA = [
     {
-      title: 'T-shirts',
-      data: shirtsDummyData,
+      title: 'Clothes',
+      data: [...pantsJSDOCDummyData, ...shirtsJSDOCDummyData],
     },
-    {
-      title: 'Pants',
-      data: pantsDummyData,
-    },
+    // {
+    //   title: SHIRTS,
+    //   data: shirtsJSDOCDummyData,
+    // },
   ];
+
+  ///**
+  // * @typedef {{title: PANTS, item: PantsObj}} PantsLocalObj
+  // */
+  //
+  ///**
+  // * @typedef {{title: SHIRTS, item: ShirtsObj}} ShirtsLocalObj
+  // */
+  //
+
+  /**
+   * @typedef {object} PantsProperties
+   * @property {Color} color
+   * @property {number} hip
+   */
+
+  /**
+   * @typedef {object} ShirtProperties
+   * @property {number} height
+   * @property {number} width
+   */
+
+  /**
+   * @template {string} T
+   * @typedef {object} Base
+   * @property {T} typeIdentifier
+   * @property {string} id
+   */
+
+  /**
+   * @typedef {Base<'pant-object'> & PantsProperties} Pant
+   */
+
+  /**
+   * @typedef {Base<'shirt-object'> & ShirtProperties} Shirt
+   */
+
+  /** @type {{title: 'Pants'|'Shirts', data: (Shirt|Pant)[]}[]} */
+  let invalidData;
+
+  /**
+   * @param {Pant|Shirt} item
+   */
+  const myTest = item => {
+    switch (item.typeIdentifier) {
+      case 'shirt-object':
+        break;
+      case 'pant-object':
+        break;
+      default:
+        break;
+    }
+    if (item.typeIdentifier === 'shirt-object') {
+      return <Tshirts item={item} />;
+    } else {
+      return <Pantss item={item} />;
+    }
+  };
+
   return (
     <SafeAreaView style={{margin: 10}}>
       <SectionList
-        sections={DATA}
-        renderItem={({item}) =>
-          item instanceof Pants ? (
-            <Pantss item={item} />
-          ) : item instanceof Tshirt ? (
-            <Tshirts item={item} />
-          ) : (
-            <Text>{item.toString()}</Text>
-          )
+        sections={invalidData}
+        renderItem={
+          item => {
+            const myItem = item.item;
+            return myTest(myItem);
+            //myTest({title: title, item: myItem});
+          }
+          //myTest({title: item.section.title, item: item.item})
         }
         renderSectionHeader={({section: {title}}) => (
           <View style={{backgroundColor: Colors.white}}>
@@ -48,6 +131,7 @@ const App = props => {
                 shadowOpacity: 0.26,
                 marginEnd: 10,
                 marginStart: 10,
+                marginBottom: 10,
                 shadowOffset: {width: 0, height: 1},
                 shadowRadius: 8,
                 elevation: 5,
